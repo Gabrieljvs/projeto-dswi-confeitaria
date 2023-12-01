@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Confeitaria</title>
+
+    <link rel="stylesheet" href="src/css/estilos.css">
+
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            var nome = document.getElementById("nome_cliente").value;
+            var email = document.getElementById("email_cliente").value;
+            var produto = document.getElementById("produto").value;
+            var quantidade = document.getElementById("quantidade").value;
+            var endereco = document.getElementById("endereco").value;
+
+            if (nome === "" || email === "" || produto === "" || quantidade === "" || endereco === "") {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            if (isNaN(quantidade) || quantidade <= 0) {
+                alert("A quantidade deve ser um número positivo.");
+                return;
+            }
+
+            // Confirmar envio do formulário
+            if (confirm("Tem certeza de que deseja enviar o pedido?")) {
+                // Exibir mensagem de pedido realizado
+                alert("Pedido realizado! Obrigado por seu pedido.");
+
+                // Limpar o formulário
+                document.getElementById("formulario_pedido").reset();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="home.html" class="logo">
+            <img src="src/imagens/logo.avif" alt="Logo confeitaria" class="imagem">
+            <span class="titulo">NOME DA CONFEITARIA</span>
+        </a>
+
+        <nav class="navegacao">
+            <ul class="menu">
+                <li class="item">
+                    <a href="home.html#trabalhos">Trabalhos</a>
+                </li>
+                <li class="item">
+                    <a href="home.html#quem-somos">Quem Somos</a>
+                </li>
+                <li class="item">
+                    <a href="#contato">Contato</a>
+                </li>
+                <li class="item">
+                    <a href="pedido.html">Pedidos</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="pedido">Registro de Pedido</h2>
+        
+        <form id="formulario_pedido" onsubmit="validarFormulario(event)" class="form-group">
+            <label for="nome_cliente">Nome do Cliente:</label>
+            <input type="text" id="nome_cliente" name="nome_cliente" required><br><br>
+
+            <label for="contato_cliente">Contato:</label>
+            <input type="text" id="contato_cliente" name="contato_cliente" placeholder="(xx) xxxxx-xxxx" required><br><br>
+
+            <label for="email_cliente">E-mail do Cliente:</label>
+            <input type="email" id="email_cliente" name="email_cliente" placeholder="texto@dominio.com" required><br><br>
+
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto" name="produto" required><br><br>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+            
+            <label for="endereco">Endereço de Entrega:</label>
+            <textarea id="endereco" name="endereco" required></textarea><br><br>
+
+            <label for="observacao">Observação: (opcional)</label>
+            <textarea id="observacao" name="observacao" ></textarea><br><br>
+
+            <label for="fileUpload">Arquivo para referência: (opcional)</label>
+            <input type="file" id="fileUpload" name="fileUpload"><br><br>
+            
+            <input type="submit" value="Registrar Pedido">
+        </form>
+    </main>
+
+    <footer class="rodape" id="contato">
+        <nav class="navegacao">
+            <a href="#" class="logo">
+                <img src="src/imagens/logo.avif" alt="Logo confeitaria" class="imagem">
+                <span class="titulo">NOME DA CONFEITARIA</span>
+            </a>
+
+            <div class="redes-sociais">
+                <a href="#" class="rede-social">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="rede-social">
+                    <i class="fab fa-instagram-square"></i>
+                </a>
+                <a href="#" class="rede-social">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </nav>
+        <p class="copyright">Todos os direitos reservados</p>
+    </footer>
+</body>
+
+</html>
